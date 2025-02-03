@@ -1,9 +1,10 @@
 describe('Testes de API', () => {
     
     it('Deve cadastrar um novo usuário com sucesso', () => {
+      const timestamp = new Date().getTime();
       const novoUsuario = {
         nome: 'David Silva',
-        email: 'David@gmail.com',
+        email: `David${timestamp}@gmail.com`,
         password: 'teste',
         administrador: 'true',
       }
@@ -22,10 +23,11 @@ describe('Testes de API', () => {
     })
 
     it('Deve cadastrar um novo produto com sucesso', () => {
-        const login = {
-          email: 'nardo2@gmail.com',
-          password: 'senha',
-        }
+      const timestamp = new Date().getTime();
+      const login = {
+        email: 'nardo2@gmail.com',
+        password: 'senha',
+      }
       
         // Login para obter o token
         cy.request('POST', 'https://serverest.dev/login', login).then((loginResponse) => {
@@ -34,7 +36,7 @@ describe('Testes de API', () => {
           const token = loginResponse.body.authorization; // Pega o token retornado
       
           const novoProduto = {
-            nome: 'Monitor NPX',
+            nome: `Monitor NPX${timestamp}`,
             preco: '1500',
             descricao: 'Gamer',
             quantidade: '120',
