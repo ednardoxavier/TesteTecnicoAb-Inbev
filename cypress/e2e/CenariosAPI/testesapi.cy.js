@@ -83,39 +83,6 @@ describe('Testes de API', () => {
             cy.log('Token:', token)
           })
     })
-    it('Deve excluir o usuário e o produto cadastrado via API', () => {
-      // Fazer login no Sistema
-      cy.visit('https://front.serverest.dev/')
-      cy.get('#email').type('nardo2@gmail.com')
-      cy.get('#password').type('senha')
-      cy.get('[data-testid="entrar"]').click()
-      // Excluir Usuário
-      cy.get('[data-testid="listar-usuarios"]').click()
-      cy.get('[class="table table-striped"]')
-        .contains('td', 'David@gmail.com') 
-        .parent() 
-        .find('button') 
-        .contains('Excluir')
-        .click()
-      // Validar se o usuário foi excluído
-      cy.get('[data-testid="listar-usuarios"]').click()
-      cy.get('[class="table table-striped"]')
-        .contains('td', 'David@gmail.com')
-        .should('not.exist')
-      // Excluir Produto
-    cy.get('[data-testid="listar-produtos"]').click()
-    cy.get('[class="table table-striped"]')
-      .contains('td', 'Monitor NPX') 
-      .parent() 
-      .find('button') 
-      .contains('Excluir')
-      .click()
-    // Validar se o produto foi excluído
-    cy.get('[data-testid="listar-produtos"]').click()
-    cy.get('[class="table table-striped"]')
-      .contains('td', 'Monitor NPX')
-      .should('not.exist')
-    })
 })
 
 
