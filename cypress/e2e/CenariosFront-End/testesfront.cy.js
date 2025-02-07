@@ -33,7 +33,9 @@ describe('Cenários Teste Técnico', () => {
     cy.get('#price').type('2')
     cy.get('#description').type('Caneta Azul')
     cy.get('#quantity').type('10')
-    cy.get('#imagem').selectFile('cypress/fixtures/canetaazul.jpg', { force: true })
+    cy.get('#imagem')
+      .click()
+      .selectFile('cypress/fixtures/canetaazul.jpg', { force: true })
     cy.get('[data-testid="cadastarProdutos"]').click()
     
     // Verificar se o produto foi cadastrado
