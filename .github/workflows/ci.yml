@@ -22,6 +22,9 @@ jobs:
       - name: Instalar dependências
         run: npm install
 
+      - name: Listar arquivos na pasta de fixtures
+        run: ls -R cypress/fixtures
+
       - name: Executar Cypress
         uses: cypress-io/github-action@v6
         with:
@@ -32,4 +35,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: cypress-results
-          path: cypress/screenshots
+          path: |
+            cypress/screenshots
+            cypress/videos
+            cypress/reports
+            cypress/logs
